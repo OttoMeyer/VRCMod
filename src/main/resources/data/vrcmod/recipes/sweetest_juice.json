@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "vrcmod:cocktail_glass"
+    },
+    {
+      "item": "vrcmod:cocktail_glass"
+    },
+    {
+      "item": "vrcmod:cocktail_glass"
+    },
+    {
+      "item": "vrcmod:cocktail_glass"
+    },
+    {
+      "item": "minecraft:sweet_berries"
+    },
+    {
+      "item": "minecraft:sweet_berries"
+    },
+    {
+      "item": "minecraft:sweet_berries"
+    },
+    {
+      "item": "minecraft:sweet_berries"
+    },
+    {
+      "item": "minecraft:honey_block"
+    }
+
+  ],
+  "result": {
+    "count": 4,
+    "item": "vrcmod:sweetest_juice"
+  }
+}
