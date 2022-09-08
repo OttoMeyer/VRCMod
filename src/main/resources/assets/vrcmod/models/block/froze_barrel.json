@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "down": "vrcmod:block/froze_barrel/froze_barrel_bottom",
+        "up": "vrcmod:block/froze_barrel/froze_barrel_up",
+        "north": "vrcmod:block/froze_barrel/froze_barrel_side",
+        "east": "vrcmod:block/froze_barrel/froze_barrel_side",
+        "south": "vrcmod:block/froze_barrel/froze_barrel_side",
+        "west": "vrcmod:block/froze_barrel/froze_barrel_side",
+        "particle": "vrcmod:block/froze_barrel/froze_barrel_side"
+    }
+}
