@@ -10,12 +10,13 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.otto.vrcmod.VRCMod;
+import net.otto.vrcmod.block.custom.FrozeBarrel;
 import net.otto.vrcmod.item.ModItemGroup;
 
 public class ModBlocks {
 
     public static final Block COCKTAIL_FROZE_BARREL = registerBlock("cocktail_froze_barrel",
-            new Block(FabricBlockSettings.of(Material.WOOD).strength(4f).requiresTool()), ModItemGroup.COCKTAIL);
+            new FrozeBarrel(FabricBlockSettings.of(Material.WOOD).strength(4f).requiresTool()), ModItemGroup.COCKTAIL);
 
     private static Block registerBlock(String name, Block block, ItemGroup tab){
         registerBlockItem(name, block, tab);

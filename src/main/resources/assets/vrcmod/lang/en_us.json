@@ -9,6 +9,9 @@
   "item.vrcmod.not_cyan": "Not Cyan",
   "item.vrcmod.retaw": "Retaw",
   "item.vrcmod.triple_w": "Triple W",
+
+  "block.vrcmod.cocktail_froze_barrel" : "Froze Barrel",
+
   "itemGroup.vrcmod.cocktail": "Cocktails"
 
 }
