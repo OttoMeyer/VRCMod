@@ -19,8 +19,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.otto.vrcmod.block.custom.FrozeBarrel;
 import net.otto.vrcmod.item.ModItems;
+import net.otto.vrcmod.recipe.CocktailFrozeRecipe;
 import net.otto.vrcmod.screen.CocktailFrozeScreenHandler;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class CocktailFrozeBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
 
@@ -72,6 +75,8 @@ public class CocktailFrozeBlockEntity extends BlockEntity implements NamedScreen
         return this.inventory;
     }
 
+
+
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
@@ -85,6 +90,7 @@ public class CocktailFrozeBlockEntity extends BlockEntity implements NamedScreen
         super.readNbt(nbt);
         progress = nbt.getInt("coctail_froze_barrel.progress");
     }
+
 
     private void resetProgress() {
         this.progress = 0;
@@ -114,11 +120,14 @@ public class CocktailFrozeBlockEntity extends BlockEntity implements NamedScreen
             inventory.setStack(i, entity.getStack(i));
         }
 
+        Optional<CocktailFrozeRecipe> recipe = entity.getWorld().getRecipeManager()
+                .getFirstMatch(CocktailFrozeRecipe.Type.INSTANCE, inventory, entity.getWorld());
+
         if(hasRecipe(entity)) {
             entity.removeStack(1, 1);
 
-            entity.setStack(2, new ItemStack(ModItems.COCKTAIL_GLASS,
-                    entity.getStack(2).getCount() + 1));
+            entity.setStack(2,new ItemStack(recipe.get().getOutput().getItem(),
+                    entity.getStack(2).getCount() +  1));
 
             entity.resetProgress();
         }
@@ -129,9 +138,12 @@ public class CocktailFrozeBlockEntity extends BlockEntity implements NamedScreen
         for (int i = 0; i < entity.size(); i++){
             inventory.setStack(i, entity.getStack(i));
         }
-        boolean hasWarmCocktailInFirstSlot = entity.getStack(1).getItem() == ModItems.SWEET_JUICE;
-        return hasWarmCocktailInFirstSlot && canInsertAmountIntoOutputSlot(inventory)
-                && canInsertItemIntoOutputSlot(inventory, ModItems.COCKTAIL_GLASS);
+
+        Optional<CocktailFrozeRecipe> match = entity.getWorld().getRecipeManager()
+                .getFirstMatch(CocktailFrozeRecipe.Type.INSTANCE, inventory, entity.getWorld());
+
+        return match.isPresent() && canInsertAmountIntoOutputSlot(inventory)
+                && canInsertItemIntoOutputSlot(inventory, match.get().getOutput().getItem());
     }
 
     private static boolean canInsertItemIntoOutputSlot(SimpleInventory inventory, Item output) {

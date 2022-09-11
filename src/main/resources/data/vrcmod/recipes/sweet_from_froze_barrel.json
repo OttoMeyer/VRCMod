@@ -1,0 +1,11 @@
+{
+    "type": "vrcmod:cocktail_froze",
+    "ingredients": [
+    {
+        "item": "vrcmod:sweet_juice"
+    }
+    ],
+    "output": {
+        "item": "vrcmod:sweetest_juice"
+    }
+}
