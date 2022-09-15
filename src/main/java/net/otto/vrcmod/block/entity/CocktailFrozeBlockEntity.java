@@ -80,17 +80,17 @@ public class CocktailFrozeBlockEntity extends BlockEntity implements NamedScreen
 
     public static Map<Item, Integer> createFuelTimeMap() {
         LinkedHashMap<Item, Integer> map = Maps.newLinkedHashMap();
-        CocktailFrozeBlockEntity.addFuel(map, Items.SNOWBALL, 200);
+        CocktailFrozeBlockEntity.addFuel(map, Items.SNOWBALL, 20);
+        CocktailFrozeBlockEntity.addFuel(map, Items.SNOW_BLOCK, 80);
+        CocktailFrozeBlockEntity.addFuel(map, Items.ICE, 100);
+        CocktailFrozeBlockEntity.addFuel(map, Items.PACKED_ICE, 900);
+        CocktailFrozeBlockEntity.addFuel(map, Items.BLUE_ICE, 8100);
         return map;
     }
 
     private static void addFuel(Map<Item, Integer> fuelTimes, ItemConvertible item, int fuelTime) {
         Item item2 = item.asItem();
         fuelTimes.put(item2, fuelTime);
-    }
-
-    private boolean isFrozing() {
-        return this.frozeTime > 0;
     }
 
     @Override
@@ -109,6 +109,9 @@ public class CocktailFrozeBlockEntity extends BlockEntity implements NamedScreen
         return this.inventory;
     }
 
+    private boolean isFrozing() {
+        return propertyDelegate.get(2) > 0;
+    }
 
 
     @Override
@@ -146,12 +149,12 @@ public class CocktailFrozeBlockEntity extends BlockEntity implements NamedScreen
     public static void tick(World world, BlockPos blockPos, BlockState state, CocktailFrozeBlockEntity entity) {
         ItemStack itemStack = entity.inventory.get(1);
 
-        entity.maxFrozeTime = 20;
         if(world.isClient()) {
             return;
         }
-        if(!entity.isFrozing()){
+        if(!entity.isFrozing() && canUseAsFuel(entity.inventory.get(0))){
             entity.frozeTime = entity.getFrozeTime(entity.inventory.get(0));
+            entity.maxFrozeTime = entity.frozeTime;
             entity.inventory.get(0).decrement(1);
 
         }
@@ -164,7 +167,6 @@ public class CocktailFrozeBlockEntity extends BlockEntity implements NamedScreen
                 craftItem(entity);
             }
         } else {
-            //entity.resetProgress();
             if(entity.progress>0)entity.progress--;
             markDirty(world, blockPos, state);
         }
@@ -177,6 +179,10 @@ public class CocktailFrozeBlockEntity extends BlockEntity implements NamedScreen
         }
         Item item = fuel.getItem();
         return CocktailFrozeBlockEntity.createFuelTimeMap().getOrDefault(item, 0);
+    }
+
+    public static boolean canUseAsFuel(ItemStack stack) {
+        return CocktailFrozeBlockEntity.createFuelTimeMap().containsKey(stack.getItem());
     }
 
     private static void craftItem(CocktailFrozeBlockEntity entity) {

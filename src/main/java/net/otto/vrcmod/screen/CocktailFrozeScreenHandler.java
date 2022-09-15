@@ -44,6 +44,11 @@ public class CocktailFrozeScreenHandler extends ScreenHandler {
         return propertyDelegate.get(0) > 0;
     }
 
+    public boolean isFrozing(){
+        return propertyDelegate.get(2) > 0;
+    }
+
+
     public int getScaledProgress() {
         int progress = this.propertyDelegate.get(0);
         int maxProgress = this.propertyDelegate.get(1);  // Max Progress

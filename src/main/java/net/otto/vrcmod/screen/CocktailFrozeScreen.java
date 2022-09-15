@@ -24,6 +24,7 @@ public class CocktailFrozeScreen extends HandledScreen<CocktailFrozeScreenHandle
         titleX = (backgroundHeight - textRenderer.getWidth(title)) / 2;
     }
 
+
     @Override
     protected void drawBackground(MatrixStack matrices, float delta, int mouseX, int mouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
@@ -45,8 +46,9 @@ public class CocktailFrozeScreen extends HandledScreen<CocktailFrozeScreenHandle
     }
 
     private void renderFuelArrow(MatrixStack matrices, int x, int y) {
-        if(handler.isCrafting()) {
-            drawTexture(matrices, x + 60, y + 38, 176, 23, 16, handler.getScaledFuel());
+        if(handler.isFrozing()) {
+            drawTexture(matrices, x + 60, y + 38 + 16 - handler.getScaledFuel(), 176,
+                    23 + 16 - handler.getScaledFuel(), 17, handler.getScaledFuel());
         }
     }
 
