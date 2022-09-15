@@ -44,6 +44,7 @@ public class CocktailFrozeBlockEntity extends BlockEntity implements NamedScreen
     private int progress = 0;
     private int maxProgress = 72;
     private int frozeTime = 0;
+    private int maxFrozeTime = 0;
 
 
     private final DefaultedList<ItemStack> inventory =
@@ -57,6 +58,7 @@ public class CocktailFrozeBlockEntity extends BlockEntity implements NamedScreen
                     case 0: return CocktailFrozeBlockEntity.this.progress;
                     case 1: return CocktailFrozeBlockEntity.this.maxProgress;
                     case 2: return CocktailFrozeBlockEntity.this.frozeTime;
+                    case 3: return CocktailFrozeBlockEntity.this.maxFrozeTime;
                     default: return 0;
                 }
             }
@@ -66,18 +68,19 @@ public class CocktailFrozeBlockEntity extends BlockEntity implements NamedScreen
                     case 0: CocktailFrozeBlockEntity.this.progress = value; break;
                     case 1: CocktailFrozeBlockEntity.this.maxProgress = value; break;
                     case 2: CocktailFrozeBlockEntity.this.frozeTime = value; break;
+                    case 3: CocktailFrozeBlockEntity.this.maxFrozeTime = value; break;
                 }
             }
 
             public int size() {
-                return 2;
+                return 4;
             }
         };
     }
 
     public static Map<Item, Integer> createFuelTimeMap() {
         LinkedHashMap<Item, Integer> map = Maps.newLinkedHashMap();
-        CocktailFrozeBlockEntity.addFuel(map, Items.SNOWBALL, 20);
+        CocktailFrozeBlockEntity.addFuel(map, Items.SNOWBALL, 200);
         return map;
     }
 
@@ -143,21 +146,26 @@ public class CocktailFrozeBlockEntity extends BlockEntity implements NamedScreen
     public static void tick(World world, BlockPos blockPos, BlockState state, CocktailFrozeBlockEntity entity) {
         ItemStack itemStack = entity.inventory.get(1);
 
+        entity.maxFrozeTime = 20;
         if(world.isClient()) {
             return;
         }
         if(!entity.isFrozing()){
-            entity.frozeTime = entity.getFrozeTime(itemStack);
+            entity.frozeTime = entity.getFrozeTime(entity.inventory.get(0));
+            entity.inventory.get(0).decrement(1);
+
         }
 
         if(hasRecipe(entity) && entity.isFrozing()){
+            --entity.frozeTime;
             entity.progress++;
             markDirty(world, blockPos, state);
             if(entity.progress >= entity.maxProgress){
                 craftItem(entity);
             }
         } else {
-            entity.resetProgress();
+            //entity.resetProgress();
+            if(entity.progress>0)entity.progress--;
             markDirty(world, blockPos, state);
         }
 

@@ -12,7 +12,7 @@ import net.otto.vrcmod.VRCMod;
 public class CocktailFrozeScreen extends HandledScreen<CocktailFrozeScreenHandler> {
 
     private static final Identifier TEXTURE =
-            new Identifier(VRCMod.MOD_ID, "textures/gui/gem_infusing_station_gui.png");
+            new Identifier(VRCMod.MOD_ID, "textures/gui/cocktail_froze_barrel_gui.png");
 
     public CocktailFrozeScreen(CocktailFrozeScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
@@ -34,12 +34,19 @@ public class CocktailFrozeScreen extends HandledScreen<CocktailFrozeScreenHandle
         drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight);
 
         renderProgressArrow(matrices, x, y);
+        renderFuelArrow(matrices, x, y);
 
     }
 
     private void renderProgressArrow(MatrixStack matrices, int x, int y) {
         if(handler.isCrafting()) {
-            drawTexture(matrices, x + 105, y + 33, 176, 0, 8, handler.getScaledProgress());
+            drawTexture(matrices, x + 85, y + 34, 176, 0, 7, handler.getScaledProgress());
+        }
+    }
+
+    private void renderFuelArrow(MatrixStack matrices, int x, int y) {
+        if(handler.isCrafting()) {
+            drawTexture(matrices, x + 60, y + 38, 176, 23, 16, handler.getScaledFuel());
         }
     }
 
