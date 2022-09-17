@@ -2,7 +2,7 @@
     "parent": "block/cube",
     "textures": {
         "down": "vrcmod:block/froze_barrel/froze_barrel_bottom",
-        "up": "vrcmod:block/froze_barrel/froze_barrel_up",
+        "up": "vrcmod:block/froze_barrel/froze_barrel_top_open",
         "north": "vrcmod:block/froze_barrel/froze_barrel_side",
         "east": "vrcmod:block/froze_barrel/froze_barrel_side",
         "south": "vrcmod:block/froze_barrel/froze_barrel_side",
