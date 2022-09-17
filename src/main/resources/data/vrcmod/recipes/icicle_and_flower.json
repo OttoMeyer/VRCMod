@@ -2,10 +2,10 @@
     "type": "vrcmod:cocktail_froze",
     "ingredients": [
     {
-        "item": "vrcmod:chokak"
+        "item": "vrcmod:needle_and_flower"
     }
     ],
     "output": {
-        "item": "vrcmod:heartless"
+        "item": "vrcmod:icicle_and_flower"
     }
 }

@@ -16,7 +16,7 @@ import net.otto.vrcmod.item.ModItemGroup;
 public class ModBlocks {
 
     public static final Block COCKTAIL_FROZE_BARREL = registerBlock("cocktail_froze_barrel",
-            new FrozeBarrel(FabricBlockSettings.of(Material.WOOD).strength(4f).requiresTool()), ModItemGroup.COCKTAIL);
+            new FrozeBarrel(FabricBlockSettings.of(Material.WOOD).strength(1f).requiresTool()), ModItemGroup.COCKTAIL);
 
     private static Block registerBlock(String name, Block block, ItemGroup tab){
         registerBlockItem(name, block, tab);

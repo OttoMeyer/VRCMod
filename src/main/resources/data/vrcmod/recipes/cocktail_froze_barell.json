@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "/": {
+      "item": "minecraft:ice"
+    },
+    "_": {
+      "tag": "minecraft:planks"
+    },
+    "#": {
+      "item": "minecraft:barrel"
+    }
+  },
+  "pattern": [
+    "_/_",
+    "/#/",
+    "_/_"
+  ],
+  "result": {
+    "item": "vrcmod:cocktail_froze_barrel"
+  }
+}

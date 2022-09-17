@@ -28,6 +28,27 @@ public class ModItems {
             new SimpleCocktail(new FabricItemSettings().group(ModItemGroup.COCKTAIL).food(ModFoodComponents.RETAW).maxCount(16)));
     public static final Item TRIPLE_W = registerItem("triple_w",
             new SimpleCocktail(new FabricItemSettings().group(ModItemGroup.COCKTAIL).food(ModFoodComponents.TRIPLE_W).maxCount(16)));
+    // New ========================================================================
+    public static final Item ANTIRETAW = registerItem("antiretaw",
+            new SimpleCocktail(new FabricItemSettings().group(ModItemGroup.COCKTAIL).food(ModFoodComponents.ANTIRETAW).maxCount(16)));
+    public static final Item CLOUD = registerItem("cloud",
+            new SimpleCocktail(new FabricItemSettings().group(ModItemGroup.COCKTAIL).food(ModFoodComponents.CLOUD).maxCount(16)));
+    public static final Item COBBLE_TEA = registerItem("cobble_tea",
+            new SimpleCocktail(new FabricItemSettings().group(ModItemGroup.COCKTAIL).food(ModFoodComponents.COBBLE_TEA).maxCount(16)));
+    public static final Item COLD_JUICE = registerItem("cold_juice",
+            new SimpleCocktail(new FabricItemSettings().group(ModItemGroup.COCKTAIL).food(ModFoodComponents.COLD_JUICE).maxCount(16)));
+    public static final Item COLDEST_JUICE = registerItem("coldest_juice",
+            new SimpleCocktail(new FabricItemSettings().group(ModItemGroup.COCKTAIL).food(ModFoodComponents.COLDEST_JUICE).maxCount(16)));
+    public static final Item ICE_CLOUD = registerItem("ice_cloud",
+            new SimpleCocktail(new FabricItemSettings().group(ModItemGroup.COCKTAIL).food(ModFoodComponents.ICE_CLOUD).maxCount(16)));
+    public static final Item ICE_TEA = registerItem("ice_tea",
+            new SimpleCocktail(new FabricItemSettings().group(ModItemGroup.COCKTAIL).food(ModFoodComponents.ICE_TEA).maxCount(16)));
+    public static final Item ICICLE_AND_FLOWER = registerItem("icicle_and_flower",
+            new SimpleCocktail(new FabricItemSettings().group(ModItemGroup.COCKTAIL).food(ModFoodComponents.ICICLE_AND_FLOWER).maxCount(16)));
+    public static final Item NEEDLE_AND_FLOWER = registerItem("needle_and_flower",
+            new SimpleCocktail(new FabricItemSettings().group(ModItemGroup.COCKTAIL).food(ModFoodComponents.NEEDLE_AND_FLOWER).maxCount(16)));
+    public static final Item CATTAIL = registerItem("cattail",
+            new SimpleCocktail(new FabricItemSettings().group(ModItemGroup.COCKTAIL).food(ModFoodComponents.CATTAIL).maxCount(16)));
 
     private static Item registerItem(String name, Item item){
         return Registry.register(Registry.ITEM, new Identifier(VRCMod.MOD_ID, name), item);

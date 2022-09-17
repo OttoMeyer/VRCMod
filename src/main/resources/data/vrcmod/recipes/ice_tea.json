@@ -2,10 +2,10 @@
     "type": "vrcmod:cocktail_froze",
     "ingredients": [
     {
-        "item": "vrcmod:chokak"
+        "item": "vrcmod:cobble_tea"
     }
     ],
     "output": {
-        "item": "vrcmod:heartless"
+        "item": "vrcmod:ice_tea"
     }
 }

@@ -2,10 +2,10 @@
     "type": "vrcmod:cocktail_froze",
     "ingredients": [
     {
-        "item": "vrcmod:chokak"
+        "item": "vrcmod:sweet_juice"
     }
     ],
     "output": {
-        "item": "vrcmod:heartless"
+        "item": "vrcmod:cold_juice"
     }
 }

@@ -2,10 +2,10 @@
     "type": "vrcmod:cocktail_froze",
     "ingredients": [
     {
-        "item": "vrcmod:sweet_juice"
+        "item": "vrcmod:retaw"
     }
     ],
     "output": {
-        "item": "vrcmod:sweetest_juice"
+        "item": "vrcmod:antiretaw"
     }
 }
